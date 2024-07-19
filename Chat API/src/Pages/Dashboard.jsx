@@ -13,7 +13,7 @@ const ChatBot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:8000/generate/${input}`);
+      const response = await axios.get(`https://chat-api-blond.vercel.app/generate/${input}`);
       const newChat = { question: input, answer: response.data.message };
       setChatHistory([...chatHistory, newChat]);
       setInput(''); // Clear input after submission
@@ -25,7 +25,7 @@ const ChatBot = () => {
 
   const handleCloseChat = async () => {
     try {
-      let response = await axios.post('http://localhost:8000/saveChat', {
+      let response = await axios.post('https://chat-api-blond.vercel.app//saveChat', {
         chatHistory: chatHistory,
         email: localStorage.getItem('userId'), // Replace this with the actual user email if available
       });
