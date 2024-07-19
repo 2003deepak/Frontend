@@ -12,7 +12,7 @@ const ChatHistory = () => {
   useEffect(() => {
     const fetchChatHistory = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/getChat', { email });
+        const response = await axios.post('https://chat-api-blond.vercel.app/getChat', { email });
         setChatHistory(response.data.message);
       } catch (error) {
         setError('Failed to fetch chat history');
