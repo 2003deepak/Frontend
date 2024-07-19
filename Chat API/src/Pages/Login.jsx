@@ -14,7 +14,7 @@ function Login() {
   const handleSubmit = async (name,email) => {
     
     try {
-      const response = await axios.post('https://chat-api-blond.vercel.app//login', {
+      const response = await axios.post('https://chat-api-blond.vercel.app/login', {
         name,
         email,
       });
