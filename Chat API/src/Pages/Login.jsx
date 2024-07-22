@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
+import { LOCAL_URL, DOMAIN_URL } from '../../config';
 
 
 function Login() {
@@ -17,6 +18,11 @@ function Login() {
       const response = await axios.post('https://chat-api-blond.vercel.app/login', {
         name,
         email,
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
       });
       
       if (response.data.message.includes('Successful')) {

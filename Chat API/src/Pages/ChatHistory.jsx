@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { LOCAL_URL, DOMAIN_URL } from '../../config';
 
 const ChatHistory = () => {
   const [chatHistory, setChatHistory] = useState([]);
@@ -12,7 +13,12 @@ const ChatHistory = () => {
   useEffect(() => {
     const fetchChatHistory = async () => {
       try {
-        const response = await axios.post('https://chat-api-blond.vercel.app/getChat', { email });
+        const response = await axios.post('https://chat-api-blond.vercel.app/getChat', { email }, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
         setChatHistory(response.data.message);
       } catch (error) {
         setError('Failed to fetch chat history');

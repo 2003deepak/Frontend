@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { LOCAL_URL, DOMAIN_URL } from '../../config';
 
 const ChatBot = () => {
   const [input, setInput] = useState('');
@@ -13,7 +14,12 @@ const ChatBot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`https://chat-api-blond.vercel.app/generate/${input}`);
+      const response = await axios.get(`https://chat-api-blond.vercel.app/generate/${input}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
       const newChat = { question: input, answer: response.data.message };
       setChatHistory([...chatHistory, newChat]);
       setInput(''); // Clear input after submission
