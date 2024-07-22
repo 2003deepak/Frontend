@@ -18,7 +18,6 @@ const ChatBot = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        withCredentials: true,
       });
       const newChat = { question: input, answer: response.data.message };
       setChatHistory([...chatHistory, newChat]);

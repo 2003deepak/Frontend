@@ -17,7 +17,6 @@ const ChatHistory = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true,
         });
         setChatHistory(response.data.message);
       } catch (error) {
