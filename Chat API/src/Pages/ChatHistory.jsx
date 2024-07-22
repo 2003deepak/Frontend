@@ -18,7 +18,6 @@ const ChatHistory = () => {
             "Content-Type": "application/json",
           },
         });
-        console.log('API response:', response.data); // Log the response to diagnose the issue
         if (Array.isArray(response.data.message)) {
           setChatHistory(response.data.message);
         } else {
