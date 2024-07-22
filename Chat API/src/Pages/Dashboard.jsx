@@ -30,7 +30,7 @@ const ChatBot = () => {
 
   const handleCloseChat = async () => {
     try {
-      let response = await axios.post('https://chat-api-blond.vercel.app//saveChat', {
+      let response = await axios.post('https://chat-api-blond.vercel.app/saveChat', {
         chatHistory: chatHistory,
         email: localStorage.getItem('userId'), // Replace this with the actual user email if available
       });
