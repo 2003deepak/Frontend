@@ -18,8 +18,14 @@ const ChatHistory = () => {
             "Content-Type": "application/json",
           },
         });
-        setChatHistory(response.data.message);
+        console.log('API response:', response.data); // Log the response to diagnose the issue
+        if (Array.isArray(response.data.message)) {
+          setChatHistory(response.data.message);
+        } else {
+          setChatHistory([]); // Ensure chatHistory is always an array
+        }
       } catch (error) {
+        console.error('Error fetching chat history:', error);
         setError('Failed to fetch chat history');
       } finally {
         setLoading(false);
